@@ -1,7 +1,7 @@
 import { IsNotEmpty, MaxLength } from "class-validator";
 import { Tema } from "src/tema/entities/tema.entity";
 import { Usuario } from "src/usuario/entities/usuario.entity";
-import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({name:'tb_postagem'})
@@ -19,14 +19,18 @@ export class Postagem{
     imagem: string 
 
 
-    @ManyToOne(() => Tema, (tema) => tema.postagem,{
+    @ManyToOne(() => Tema, (tema) => tema.postagem,
+    {
         onDelete: "CASCADE"
     })
+    @JoinColumn() 
     tema: Tema
 
-    @ManyToOne(() => Usuario, (usuario) => usuario.postagem,{
+    @ManyToOne(() => Usuario, (usuario) => usuario.postagem,
+    {
         onDelete: "CASCADE"
     })
+    @JoinColumn() 
     usuario: Usuario
 
 }

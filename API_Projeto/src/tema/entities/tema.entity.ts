@@ -4,8 +4,8 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({name:'tb_tema'})
-export class Tema{
-   
+export class Tema
+{
     @PrimaryGeneratedColumn()
     id: number
     
@@ -15,9 +15,9 @@ export class Tema{
     nome: string
 
 
-    @OneToMany(() => Postagem, (postagem) => postagem.tema,{
+    @OneToMany(() => Postagem, (postagem) => postagem.tema,
+    {
         onDelete: "CASCADE"
     })
     postagem: Postagem
-
 }

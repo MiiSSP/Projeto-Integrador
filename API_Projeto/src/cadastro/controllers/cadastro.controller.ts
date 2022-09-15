@@ -1,14 +1,11 @@
-import {
-    Body, Controller, Delete, Get, HttpCode,
-    HttpStatus, Param, ParseIntPipe, Post, Put
-} from "@nestjs/common";
+import {Body, Controller, Delete, Get, HttpCode,HttpStatus, Param, ParseIntPipe, Post, Put} from "@nestjs/common";
 import { Cadastro } from "../entities/cadastro.entity";
-import { cadastroService } from "../services/cadastro.service";
+import { CadastroService } from "../services/cadastro.service";
 
 @Controller('/cadastro')
-export class cadastroController {
+export class CadastroController {
 
-    constructor(private readonly service: cadastroService) { }
+    constructor(private readonly service: CadastroService) {}
 
     @Get()
     @HttpCode(HttpStatus.OK)

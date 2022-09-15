@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cadastro } from './cadastro/entities/cadastro.entity';
-import { cadastroModule } from './cadastro/modules/cadastro.module';
+import { CadastroModule } from './cadastro/modules/cadastro.module';
 import { Postagem } from './postagem/entities/postagem.entity';
-import { postagemModule } from './postagem/modules/postagem.module';
+import { PostagemModule } from './postagem/modules/postagem.module';
 import { Tema } from './tema/entities/tema.entity';
-import { temaModule } from './tema/modules/tema.module';
+import { TemaModule } from './tema/modules/tema.module';
 import { Usuario } from './usuario/entities/usuario.entity';
-import { usuarioModule } from './usuario/modules/usuario.module';
+import { UsuarioModule } from './usuario/modules/usuario.module';
 
 
 @Module({
@@ -21,11 +21,11 @@ import { usuarioModule } from './usuario/modules/usuario.module';
       database: 'db_projeto',
       entities: [Postagem, Tema, Cadastro, Usuario],
       synchronize: true
-    }),
-postagemModule,
-temaModule,
-cadastroModule,
-usuarioModule
+}),
+    PostagemModule,
+    TemaModule,
+    CadastroModule,
+    UsuarioModule
 ],
 controllers: [],
 providers: [],

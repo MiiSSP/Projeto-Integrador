@@ -5,8 +5,8 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn
 
 
 @Entity({name:'tb_usuario'})
-export class Usuario{
-   
+export class Usuario
+{
     @PrimaryGeneratedColumn()
     id: number
     
@@ -15,12 +15,13 @@ export class Usuario{
     @Column({nullable: false, length: 1000})
     nickname: string
 
-    @OneToMany(() => Postagem, (postagem) => postagem.usuario,{
-        onDelete: "CASCADE"
-    })
+    @OneToMany(() => Postagem, (postagem) => postagem.usuario)
     postagem: Postagem
 
-    @OneToOne(() => Cadastro, (cadastro) => cadastro.usuario) 
+    @OneToOne(() => Cadastro, (cadastro) => cadastro.usuario,
+    {
+        onDelete: "CASCADE"
+    })
+    @JoinColumn() 
     cadastro: Cadastro
-
 }
