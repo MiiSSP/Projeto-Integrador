@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, MaxLength } from "class-validator";
 import { Cadastro } from "src/cadastro/entities/cadastro.entity";
 import { Postagem } from "src/postagem/entities/postagem.entity";
@@ -8,20 +9,24 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn
 export class Usuario
 {
     @PrimaryGeneratedColumn()
+    @ApiProperty()
     id: number
     
     @IsNotEmpty()
     @MaxLength(1000)
     @Column({nullable: false, length: 1000})
+    @ApiProperty()
     nickname: string
 
     @OneToMany(() => Postagem, (postagem) => postagem.usuario)
+    @ApiProperty ({type:() => Postagem})
     postagem: Postagem
 
     @OneToOne(() => Cadastro, (cadastro) => cadastro.usuario,
     {
         onDelete: "CASCADE"
     })
-    @JoinColumn() 
+    @JoinColumn()
+    @ApiProperty ({type:() => Cadastro})
     cadastro: Cadastro
 }
